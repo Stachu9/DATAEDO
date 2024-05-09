@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {TodosService} from "./todos.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'dataedo';
+  constructor(todosService: TodosService) {
+    todosService.getSecondPendingTodo()
+      .subscribe(
+        (object) => console.log(object)
+      );
+  }
 }
